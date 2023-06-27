@@ -1,0 +1,11 @@
+README.md
+setup.py
+SaidouModule.egg-info/PKG-INFO
+SaidouModule.egg-info/SOURCES.txt
+SaidouModule.egg-info/dependency_links.txt
+SaidouModule.egg-info/requires.txt
+SaidouModule.egg-info/top_level.txt
+SaidouNeurones/ReseauNeuronesSaid.py
+SaidouNeurones/__init__.py
+SaidouPixels/Pixels.py
+SaidouPixels/__init__.py
