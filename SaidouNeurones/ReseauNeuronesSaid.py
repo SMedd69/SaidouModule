@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score
 from tqdm import tqdm
 
-''' ---- Exemple : ----
+'''
+    ---- Exemple : ----
          
         /-\ 
        / | \
@@ -94,23 +95,31 @@ def Forward_Propagation(X, Parametres):
 #  3 - Fonction coût - Calcul de pertes
 
 
-def Log_Loss(A, y):
+def Log_Loss(A, y, activation_choice='sigmoid'):
     ''' 
-    Fonction coût permet de calculer l'erreur entre
-    la valeur produite et la valeur attendue
-    en ajoutant un epsilon = 1e-15
+    Fonction coût permet de calculer l'erreur entre la valeur produite et la valeur attendue. On ajoute un epsilon = 1e-15. 
+    Le paramètre activation_choice(str) permet de choisir la fonction
+    d'activation : relu, softmax, sigma (par défaut), tanh 
 
     Attributs :
     A (dict) : Dictionnaires des Activations des poids
     y : Valeur attendue
+    activation_choice (str) : Choix de la fonction d'activation ( relu, softmax, tanh, sigmoid = par défaut)
 
     Returns :
-
     La sommes de la différence en logarithme de la valeurs
     produite moins la valeur attendue
     '''
-    epsilon = 1e-15
-    return 1 / len(y) * np.sum(-y * np.log(A + epsilon) - (1 - y) * np.log(1 - A + epsilon))
+    if activation_choice == 'sigmoid':
+        epsilon = 1e-15
+        return 1 / len(y) * np.sum(-y * np.log(A + epsilon) - (1 - y) * np.log(1 - A + epsilon))
+    elif activation_choice == 'tanh':
+        return np.tanh(A)
+    elif activation_choice == 'relu':
+        return np.maximum(0, A)
+    elif activation_choice == 'softmax':
+        expZ = np.exp(A - np.max(A, axis=0, keepdims=True))
+        return expZ / np.sum(expZ, axis=0, keepdims=True)
 
 # 4 - Propagation en arrière
 
@@ -171,7 +180,7 @@ def Predict(X, Parametres):
     return AF >= 0.5
 
 
-def Artificial_neurone(X, y, hidden_layers=(32, 32, 32), learning_rate=0.1, n_iter=1000):
+def Artificial_neurone(X, y, hidden_layers=(32, 32, 32), learning_rate=0.1, n_iter=1000, activation_choice: str = 'sigmoid'):
     ''' 
     Fonction regroupe le réseau en choisissant la taille des couches
     retourne en dictionnaire contenant les paramètres et le modèle
@@ -196,7 +205,8 @@ def Artificial_neurone(X, y, hidden_layers=(32, 32, 32), learning_rate=0.1, n_it
         Parametres = Update(Gradients, Parametres, learning_rate)
         Af = Activations['A' + str(C)]
 
-        training_history[i, 0] = (Log_Loss(y.flatten(), Af.flatten()))
+        training_history[i, 0] = (
+            Log_Loss(y.flatten(), Af.flatten(), activation_choice=activation_choice))
         y_pred = Predict(X, Parametres)
         print(y_pred)
         training_history[i, 1] = (
