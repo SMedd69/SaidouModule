@@ -1,11 +1,28 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: SaidouModule
-Version: 1.0.1
-Summary: Module possédant 2 packages : SaidouPixels et SaidouNeurone, lire le README.md pour plus d'informations.
-Home-page: UNKNOWN
+Version: 1.3.0
+Summary: Module contenant des outils de réseaux de neurones simples et de manipulation d'images pixelisées.
+Home-page: https://github.com/SMedd69/SaidouModule
 Author: Meddahi Saïd
-License: UNKNOWN
-Platform: UNKNOWN
+Author-email: s.meddahi.fo@gmail.com
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: opencv-python
+Requires-Dist: tqdm
+Requires-Dist: scikit-learn
 
-UNKNOWN
+Module SaidouModule possède des packages dédier à l'intelligence artificielle. Le but de ceci étant purement éducatif.
 
+Se module contient les packages suivants :
+    - SaidouPixels : Qui possède des fonctions permettant d'initialiser une image avec des pixels. La taille et les couches peuvent être choisis. Et d'autres méthodes permettant d'afficher une image, d'enregistrer l'image générer en fichier, charger les images dans une matrice Numpy.
+
+    - SaidouNeurone : Qui possède des fonctions permettant de réaliser un réseau de neurone à plusieurs couches.
+
+Le module est en cours de développement et libre d'accès.. 

@@ -1,4 +1,7 @@
+MANIFEST.in
 README.md
+pyproject.toml
+setup.cfg
 setup.py
 SaidouModule.egg-info/PKG-INFO
 SaidouModule.egg-info/SOURCES.txt
@@ -6,6 +9,10 @@ SaidouModule.egg-info/dependency_links.txt
 SaidouModule.egg-info/requires.txt
 SaidouModule.egg-info/top_level.txt
 SaidouNeurones/ReseauNeuronesSaid.py
+SaidouNeurones/SaidouNeuroneV2.py
+SaidouNeurones/SaidouNeuroneV3.py
 SaidouNeurones/__init__.py
+SaidouNeurones/tests/__init__.py
+SaidouNeurones/tests/test_saidou_neurone_v3.py
 SaidouPixels/Pixels.py
 SaidouPixels/__init__.py
